@@ -25,34 +25,34 @@ import { FooterComponent } from './component/footer/footer.component';
 
 const routes: Routes = [
 
-  {path:"",redirectTo:"login",pathMatch:"full"},
-  {path:"home",canActivate:[authguardGuard],component:HomeComponent},
-  {path:"cart",canActivate:[authguardGuard],component:CartComponent},
-  {path:"shappingaddress/:id",canActivate:[authguardGuard],component:ShappingAddressComponent},
-  {path:"brands",canActivate:[authguardGuard],component:BrandsComponent},
-  {path:"product",canActivate:[authguardGuard],component:ProductComponent},
-  {path:"products",canActivate:[authguardGuard],component:AllproductsComponent},
-  {path:"footer",canActivate:[authguardGuard],component:FooterComponent},
-  {path:"categories",canActivate:[authguardGuard],component:CategoriesComponent},
-  {path:"detail-categories/:id",canActivate:[authguardGuard],component:DetailsCategroiesComponent},
-  {path:"detail-brands/:id",canActivate:[authguardGuard],component:DetailsbrandComponent},
-  {path:"wishList",canActivate:[authguardGuard],component:WishListComponent},
-  {path:"allorders",canActivate:[authguardGuard],component:OrdersComponent},
-  {path:"notfound",canActivate:[authguardGuard],component:NotfoundComponent},
-  {path:"productdetails/:id",canActivate:[authguardGuard],component:ProductdetailsComponent},
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "home", canActivate: [authguardGuard], component: HomeComponent },
+  { path: "cart", canActivate: [authguardGuard], component: CartComponent },
+  { path: "shappingaddress/:id", canActivate: [authguardGuard], component: ShappingAddressComponent },
+  { path: "brands", canActivate: [authguardGuard], component: BrandsComponent },
+  { path: "product", canActivate: [authguardGuard], component: ProductComponent },
+  { path: "products", canActivate: [authguardGuard], component: AllproductsComponent },
+  { path: "footer", canActivate: [authguardGuard], component: FooterComponent },
+  { path: "categories", canActivate: [authguardGuard], component: CategoriesComponent },
+  { path: "detail-categories/:id", canActivate: [authguardGuard], component: DetailsCategroiesComponent },
+  { path: "detail-brands/:id", canActivate: [authguardGuard], component: DetailsbrandComponent },
+  { path: "wishList", canActivate: [authguardGuard], component: WishListComponent },
+  { path: "allorders", canActivate: [authguardGuard], component: OrdersComponent },
+  { path: "notfound", canActivate: [authguardGuard], component: NotfoundComponent },
+  { path: "productdetails/:id", canActivate: [authguardGuard], component: ProductdetailsComponent },
 
-  {path:"login",canActivate:[noautdGuard] ,component:LoginComponent},
-  {path:"register",canActivate:[noautdGuard],component:RegisterComponent},
-  {path:"forget-password",canActivate:[noautdGuard],component:ForgetPasswordComponent},
-  {path:"verify-reset-code",canActivate:[noautdGuard],component:VerifyResetCodeComponent},
-  {path:"reset-password",canActivate:[noautdGuard],component:ResetpasswordComponent},
-  {path:"**",component:NotfoundComponent},
+  { path: "login", canActivate: [noautdGuard], component: LoginComponent },
+  { path: "register", canActivate: [noautdGuard], component: RegisterComponent },
+  { path: "forget-password", canActivate: [noautdGuard], component: ForgetPasswordComponent },
+  { path: "verify-reset-code", canActivate: [noautdGuard], component: VerifyResetCodeComponent },
+  { path: "reset-password", canActivate: [noautdGuard], component: ResetpasswordComponent },
+  { path: "**", component: NotfoundComponent },
 
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

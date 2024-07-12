@@ -1,0 +1,44 @@
+<div *ngIf="isLoading" class=" position-fixed top-0 end-0 start-0 bottom-0 bg-dark vh-100 zeindex d-flex align-items-center justify-content-center">
+    <div class="pendulum d-flex align-items-center justify-content-center">
+        <div class="pendulum_box d-flex align-items-center justify-content-center ">
+            <div class="ball first"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball last"></div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5 pt-5">
+    <div class="container bg-main-light p-4 shadow-sm my-5 rounded ">
+        <h3 class="my-3 fw-bold text-main">Wish List :</h3>
+        <div *ngFor="let cartItem of detailsCart" class="row align-items-center  p-2 border-bottom pb-3 ">
+            <div class="col-md-1">
+                <div>
+                    <img class="w-100" [src]="cartItem.imageCover" alt="">
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="my-2 fw-bold">{{cartItem.title}}</p>
+                        <p class="my-0 fw-bold text-main font-sm">Price: {{cartItem.price}}</p>
+                        <div class="hov mt-2">
+                            <button (click)="removeToWishList(cartItem.id)" class="btn m-0 p-0">
+                                <i class="fa-regular fa-trash-can  defrant"></i>
+                                <span class="ms-1">Remove</span>
+                            </button>
+                        </div>
+                    </div>
+
+                  <div>
+                    <button (click)="addToCart(cartItem?._id)" class="btn bg-main  text-white mt-3">+ Add To
+                        Cart</button>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

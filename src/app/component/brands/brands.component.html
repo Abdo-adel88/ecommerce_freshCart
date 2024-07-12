@@ -1,0 +1,26 @@
+<div *ngIf="isLoading" class=" position-fixed top-0 end-0 start-0 bottom-0 bg-dark vh-100 zeindex d-flex align-items-center justify-content-center">
+    <div class="pendulum d-flex align-items-center justify-content-center">
+        <div class="pendulum_box d-flex align-items-center justify-content-center ">
+            <div class="ball first"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball last"></div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5 pt-5">
+
+    <div class="row">
+
+        <div *ngFor="let product of allCategories" class="col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-2 ">
+            <a [routerLink]="['/detail-brands', product._id]">
+                <div class="p-2 product flex-column d-flex align-items-center">
+                    <img height="300px" class="w-100 " [src]="product.image" alt="">
+                    <h3 class="h4 fw-bold mt-2">{{product.name}}</h3>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>

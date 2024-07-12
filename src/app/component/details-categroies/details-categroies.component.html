@@ -1,0 +1,15 @@
+<div class="container mt-5 pt-5">
+    <div *ngIf="productDetails.length;else non" class="row my-5">
+        <div *ngFor="let item of productDetails" class="col-md-3 ">
+            <app-product [product]="item"></app-product>
+
+        </div>
+    </div>
+    <ng-template #non>
+        <div class="d-flex align-items-center text-center justify-content-center my-5 py-5">
+            <div class="d-flex align-items-center text-center justify-content-center">
+                <h2 class="h1 fw-bolder text-center">No available Data For This category</h2>
+            </div>
+        </div>
+    </ng-template>
+</div>

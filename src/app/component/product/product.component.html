@@ -1,0 +1,24 @@
+<div class="h-25">
+    <div class="p-2 product rounded ">
+        <i [class.text-danger]="changeColor" [class]="isWishListProduct(product._id)?'fa-solid text-danger':'fa-regular'"  (click)="addTowish(product._id)" class=" fa-heart mt-3  fs-4"></i>
+
+        <a [routerLink]="['/productdetails',product._id]">
+
+            <img height="300px" class="w-100 object-fit-fill" [src]="product.imageCover" [alt]="product.title">
+            <span class="font-sm text-main fw-bold">{{product.category.name}}</span>
+            <p class="fw-bold">{{product.title.split(" ").splice(0,2).join(' ')}}</p>
+            <div class="d-flex justify-content-between">
+                <span class="font-sm fw-bold">{{product.price}} EGP</span>
+                <div>
+                    <i class="fa-solid fa-star rating-color mx-2"></i>
+                    <span class="fw-bold font-sm">{{product.ratingsAverage}}</span>
+                </div>
+
+            </div>
+
+
+
+        </a>
+        <button (click)="addToCart(product._id)" class="btn bg-main w-100 text-white mt-3">+ Add To Cart</button>
+    </div>
+</div>

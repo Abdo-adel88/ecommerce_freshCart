@@ -1,0 +1,55 @@
+<div *ngIf="isLoading" class=" position-fixed top-0 end-0 start-0 bottom-0 bg-dark vh-100 zeindex d-flex align-items-center justify-content-center">
+    <div class="pendulum d-flex align-items-center justify-content-center">
+        <div class="pendulum_box d-flex align-items-center justify-content-center ">
+            <div class="ball first"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball last"></div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5 pt-5">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <div class="border p-4">
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-container *ngFor="let productImg of productDetails?.images">
+                        <ng-template carouselSlide>
+                            <img class="w-100" [src]="productImg" [alt]="productDetails?.title">
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="p-4">
+                <h3 class="fw-bold">{{productDetails?.title}}</h3>
+                <p class="my-3">{{productDetails?.description}}</p>
+                <span class="font-sm text-main fw-bold">{{productDetails?.category?.name}}</span>
+                <div class="my-3">
+                    <p class="my-0 font-sm fw-bold text-secondary">Available Quatity : {{productDetails?.quantity}}</p>
+                    <p class="my-0 font-sm fw-bold text-secondary">Brand : {{productDetails?.brand?.name}}</p>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <span class="font-sm fw-bold">{{productDetails?.price}} EGP</span>
+                    <div>
+                        <i class="fa-solid fa-star rating-color mx-2"></i>
+                        <span class="fw-bold font-sm">{{productDetails?.ratingsAverage}}</span>
+                    </div>
+
+                </div>
+
+
+                <button (click)="addToCart(productDetails?._id)" class="btn bg-main w-100 text-white mt-3">+ Add To
+                    Cart</button>
+
+            </div>
+        </div>
+    </div>
+</div>

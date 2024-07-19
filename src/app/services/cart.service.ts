@@ -9,15 +9,22 @@ export class CartService {
   cartItemsNum = new BehaviorSubject<number>(0)
   
   constructor(private _HttpClient: HttpClient) {
-    this.getUserCart().subscribe({
-      next: (response) => {
-       
-        this.cartItemsNum.next(response.numOfCartItems) 
-      },
-     
-    })
+   this.updateCartItemsCount()
   }
-
+updateCartItemsCount(){
+  this.getUserCart().subscribe({
+    next: (response) => {
+     
+      this.cartItemsNum.next(response.numOfCartItems) 
+    },
+    error:(err)=>{
+      if(err.status == 404){
+        this.cartItemsNum.next(0)
+      }
+    }
+   
+  })
+}
  
 
   addToCart(id: string): Observable<any> {

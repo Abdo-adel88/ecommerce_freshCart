@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-constructor(private _AuthService:AuthService , private _router:Router){};
+constructor(private _AuthService:AuthService , private _router:Router ,private _CartService: CartService, private _WishlistService: WishlistService){};
 
   apiErrorMessage:string='';
 isLoading:boolean=false;
@@ -26,6 +28,8 @@ this._AuthService.login(loginForm.value).subscribe(
   {
     next:(Response)=>{
       localStorage.setItem('token',Response.token)
+      this._CartService.updateCartItemsCount()
+      this._WishlistService.updateWishListItemsCount()
       this._router.navigate(['/home'])
       this._AuthService.isLoggedInSubject.next(true)
       this.isLoading=false

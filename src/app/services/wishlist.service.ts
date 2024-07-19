@@ -14,12 +14,22 @@ export class WishlistService {
 
   wishItemsNum = new BehaviorSubject<number>(0)
   constructor(private _HttpClient: HttpClient) {
+  this.updateWishListItemsCount()
+  }
+
+  updateWishListItemsCount(){
     this.getUserWish().subscribe({
       next: (response) => {
         
         this.wishItemsNum.next(response.count) 
         this.wishListProductId.next((response.data as Iproduct[]).map((product)=>product._id))
       },
+
+      error:(err)=>{
+        if(err.status == 404){
+          this.wishItemsNum.next(0)
+        }
+      }
     
     })
     

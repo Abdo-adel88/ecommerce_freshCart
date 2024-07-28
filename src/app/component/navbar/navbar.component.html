@@ -27,27 +27,27 @@
 
 
             </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center ">
+            <ul class="navbar-nav  ms-md-auto mb-2 mb-lg-0 d-flex  ">
 
 
-                <li *ngIf="isLogeedUser" class="nav-item mx-1">
+                <li *ngIf="isLogeedUser" class="nav-item mx-1 mt-2">
                     <a  class="nav-link position-relative" routerLinkActive="text-main" routerLink="/cart">
                         <i class="fa-solid fa-cart-shopping text-main"></i>
-                        <span class="position-absolute font-s mt-2 me-2 bg-main text-white top-0 start-100 translate-middle badge rounded-pill ">
+                        <span class="position-absolute font-s mt-2 me-2 bg-main text-white top-0 startt translate-middle badge rounded-pill ">
                             {{numOfCartItems}}
                             
                           </span></a>
                 </li>
-                <li *ngIf="isLogeedUser" class="nav-item mx-2">
+                <li *ngIf="isLogeedUser" class="nav-item mx-2 mt-2">
                     <a  class="nav-link position-relative" routerLinkActive="text-main"  routerLink="/wishList">
                         <i class="fa-solid fa-heart text-danger fs-5"></i>
-                        <span class="position-absolute font-s mt-2 me-2 bg-main text-white top-0 start-100 translate-middle badge rounded-pill ">
+                        <span class="position-absolute font-s mt-2 me-2 bg-main text-white top-0 startt translate-middle badge rounded-pill ">
                             {{numOfWishItems}}
                             
                           </span></a>
                 </li>
-                <div class="ms-md-5 d-flex align-items-center">
-                    <i class="fa-brands mx-2 fa-instagram"></i>
+                <div class="ms-md-5 d-flex py-3">
+                    <i class="fa-brands me-2 fa-instagram"></i>
                     <i class="fa-brands mx-2 fa-facebook"></i>
                    
                     <i class="fa-brands mx-2 fa-twitter"></i>
@@ -55,13 +55,13 @@
                    
                 </div>
                 <li *ngIf="!isLogeedUser" class="nav-item">
-                    <a class="nav-link" routerLinkActive="text-main" routerLink="login">Login</a>
+                    <a class="nav-link mt-1" routerLinkActive="text-main" routerLink="login">Login</a>
                 </li>
                 <li *ngIf="!isLogeedUser" class="nav-item">
-                    <a class="nav-link" routerLinkActive="text-main" routerLink="register">Register</a>
+                    <a class="nav-link mt-1" routerLinkActive="text-main" routerLink="register">Register</a>
                 </li>
                 <li *ngIf="isLogeedUser" class="nav-item">
-                    <a (click)="signout()" class="nav-link" routerLink="register">SignOut</a>
+                    <a (click)="signout()" class="nav-link mt-1" routerLink="register">SignOut</a>
                 </li>
          
 

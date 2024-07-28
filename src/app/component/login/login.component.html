@@ -1,40 +1,47 @@
-<div class="container mt-5 pt-5">
-    <div class="w-50 mx-auto my-5">
+<div class="b-gg vh-100 overflow-hidden">
 
-        <form (ngSubmit)="handelLogin(loginForm)" [formGroup]="loginForm">
-            <h3>
-                Login Now :
-            </h3>
-            <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">{{apiErrorMessage}}</div>
+    <div class="mx-md-5 mt-5 pt-5">
+        <div class="w-75 box ">
+            <div class=" p-3 mx-auto my-5">
 
-
-            <label for="useremail ">email :</label>
-            <input formControlName="email" class="form-control" id="useremail " type="email">
-
-            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
-                <p *ngIf="loginForm.get('email')?.getError('required')" class="my-0">email is required</p>
-                <p *ngIf="loginForm.get('email')?.getError('email')" class="my-0">Enter valid email</p>
+                <form (ngSubmit)="handelLogin(loginForm)" [formGroup]="loginForm">
+                    <h3>
+                        Login Now :
+                    </h3>
+                    <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">{{apiErrorMessage}}</div>
 
 
+                    <label for="useremail ">email :</label>
+                    <input formControlName="email" class="form-control" id="useremail " type="email">
+
+                    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                        <p *ngIf="loginForm.get('email')?.getError('required')" class="my-0">email is required</p>
+                        <p *ngIf="loginForm.get('email')?.getError('email')" class="my-0">Enter valid email</p>
+
+
+                    </div>
+
+                    <label for="userpassword">password :</label>
+                    <input formControlName="password" class="form-control" id="userpassword" type="password">
+
+                    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                        class="text-danger">
+                        <p *ngIf="loginForm.get('password')?.getError('required')" class="my-0">Password is required</p>
+                        <p *ngIf="loginForm.get('password')?.getError('pattern')" class="my-0">Enter a complex password
+                        </p>
+
+
+                    </div>
+
+
+
+                    <button [disabled]="loginForm.invalid || isLoading" class="btn bg-main text-light my-3">
+                        <span *ngIf="!isLoading">Send</span>
+                        <span *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></span>
+                    </button>
+                    <a class="ms-2 text-secondary" routerLink="/forget-password">forget password?</a>
+                </form>
             </div>
-
-            <label for="userpassword">password :</label>
-            <input formControlName="password" class="form-control" id="userpassword" type="password">
-
-            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
-                <p *ngIf="loginForm.get('password')?.getError('required')" class="my-0">Password is required</p>
-                <p *ngIf="loginForm.get('password')?.getError('pattern')" class="my-0">Enter a complex password</p>
-
-
-            </div>
-
-
-
-            <button [disabled]="loginForm.invalid || isLoading" class="btn bg-main text-light my-3">
-                <span *ngIf="!isLoading">Send</span>
-                <span *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></span>
-            </button>
-            <a class="mx-3 text-secondary" routerLink="/forget-password">forget password?</a>
-        </form>
+        </div>
     </div>
 </div>

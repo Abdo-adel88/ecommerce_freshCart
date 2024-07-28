@@ -1,44 +1,66 @@
-<div *ngIf="isLoading" class=" position-fixed top-0 end-0 start-0 bottom-0 bg-dark vh-100 zeindex d-flex align-items-center justify-content-center">
-    <div class="pendulum d-flex align-items-center justify-content-center">
-        <div class="pendulum_box d-flex align-items-center justify-content-center ">
-            <div class="ball first"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball last"></div>
-        </div>
+<div *ngIf="isLoading"
+    class=" position-fixed top-0 end-0 start-0 bottom-0 bg-white vh-100 zeindex d-flex align-items-center justify-content-center">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <svg class="cart" role="img" aria-label="Shopping cart line animation" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+                <g class="cart__track" stroke="hsla(0,10%,10%,0.1)">
+                    <polyline points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" />
+                    <circle cx="43" cy="111" r="13" />
+                    <circle cx="102" cy="111" r="13" />
+                </g>
+                <g class="cart__lines" stroke="currentColor">
+                    <polyline class="cart__top" points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" stroke-dasharray="338 338" stroke-dashoffset="-338" />
+                    <g class="cart__wheel1" transform="rotate(-90,43,111)">
+                        <circle class="cart__wheel-stroke" cx="43" cy="111" r="13" stroke-dasharray="81.68 81.68" stroke-dashoffset="81.68" />
+                    </g>
+                    <g class="cart__wheel2" transform="rotate(90,102,111)">
+                        <circle class="cart__wheel-stroke" cx="102" cy="111" r="13" stroke-dasharray="81.68 81.68" stroke-dashoffset="81.68" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        
     </div>
 </div>
 <div class="container mt-5 pt-5">
-    <div class="container bg-main-light p-4 shadow-sm my-5 rounded ">
-        <h3 class="my-3 fw-bold text-main">Wish List :</h3>
-        <div *ngFor="let cartItem of detailsCart" class="row align-items-center  p-2 border-bottom pb-3 ">
-            <div class="col-md-1">
-                <div>
-                    <img class="w-100" [src]="cartItem.imageCover" alt="">
-                </div>
-            </div>
-            <div class="col-md-11">
-                <div class="d-flex justify-content-between align-items-center">
+    <div class="container bg-main-light px-4 shadow-sm my-5 rounded ">
+        <div *ngIf="detailsCart.length ;else non">
+            <h3 class="my-3 fw-bold text-main">Wish List :</h3>
+            <div *ngFor="let cartItem of detailsCart" class="row align-items-center  p-2 border-bottom pb-3 ">
+                <div class="col-md-1">
                     <div>
-                        <p class="my-2 fw-bold">{{cartItem.title}}</p>
-                        <p class="my-0 fw-bold text-main font-sm">Price: {{cartItem.price}}</p>
-                        <div class="hov mt-2">
-                            <button (click)="removeToWishList(cartItem.id)" class="btn m-0 p-0">
-                                <i class="fa-regular fa-trash-can  defrant"></i>
-                                <span class="ms-1">Remove</span>
-                            </button>
-                        </div>
+                        <img class="w-100" [src]="cartItem.imageCover" alt="">
                     </div>
+                </div>
+                <div class="col-md-11">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="my-2 fw-bold">{{cartItem.title}}</p>
+                            <p class="my-0 fw-bold text-main font-sm">Price: {{cartItem.price}}</p>
+                            <div class="hov mt-2">
+                                <button (click)="removeToWishList(cartItem.id)" class="btn m-0 p-0">
+                                    <i class="fa-regular fa-trash-can  defrant"></i>
+                                    <span class="ms-1">Remove</span>
+                                </button>
+                            </div>
+                        </div>
 
-                  <div>
-                    <button (click)="addToCart(cartItem?._id)" class="btn bg-main  text-white mt-3">+ Add To
-                        Cart</button>
-                  </div>
+                        <div>
+                            <button (click)="addToCart(cartItem?._id)" class="btn bg-main  text-white mt-3">+ Add To
+                                Cart</button>
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-        
+        <ng-template #non>
+            <div class="d-flex align-items-center text-center justify-content-center  my-5 py-5">
+                <div class="d-flex flex-column align-items-center text-center justify-content-center">
+                    <h2 class="h1 fw-bolder text-main text-center">This WishList is empty</h2>
+                    <img class="w-50 object-fit-fill mt-2" src="assets/imges/images/2152493.jpg" alt="">
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

@@ -6,7 +6,7 @@
         <ng-container *ngFor="let cat of allCategories">
             <ng-template carouselSlide>
                 <div class="d-flex align-items-center flex-column">
-                    <img height="200" class="object-fit-cover" [src]="cat.image" [alt]="cat.name" />
+                    <img height="200" class="object-fit-fill" [src]="cat.image" [alt]="cat.name" />
                     <p class="py-2 font-sm">{{cat.name}}</p>
                 </div>
             </ng-template>

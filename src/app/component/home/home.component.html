@@ -1,32 +1,46 @@
 <div *ngIf="isLoading"
-    class=" position-fixed top-0 end-0 start-0 bottom-0 bg-dark  vh-100 zeindex d-flex align-items-center justify-content-center">
-    <div class="pendulum d-flex align-items-center justify-content-center">
-        <div class="pendulum_box d-flex align-items-center justify-content-center ">
-            <div class="ball first"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball last"></div>
-        </div>
+    class=" position-fixed top-0 end-0 start-0 bottom-0 bg-white vh-100 zeindex d-flex align-items-center justify-content-center">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <svg class="cart" role="img" aria-label="Shopping cart line animation" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+                <g class="cart__track" stroke="hsla(0,10%,10%,0.1)">
+                    <polyline points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" />
+                    <circle cx="43" cy="111" r="13" />
+                    <circle cx="102" cy="111" r="13" />
+                </g>
+                <g class="cart__lines" stroke="currentColor">
+                    <polyline class="cart__top" points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" stroke-dasharray="338 338" stroke-dashoffset="-338" />
+                    <g class="cart__wheel1" transform="rotate(-90,43,111)">
+                        <circle class="cart__wheel-stroke" cx="43" cy="111" r="13" stroke-dasharray="81.68 81.68" stroke-dashoffset="81.68" />
+                    </g>
+                    <g class="cart__wheel2" transform="rotate(90,102,111)">
+                        <circle class="cart__wheel-stroke" cx="102" cy="111" r="13" stroke-dasharray="81.68 81.68" stroke-dashoffset="81.68" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+        
     </div>
 </div>
-<div class="container mt-5 pt-5">
-    <app-home-main-slid></app-home-main-slid>
-    <app-home-categories-slid></app-home-categories-slid>
-    <div class="row">
-        <h3 class="fw-bold">popular items this season :</h3>
-        <label class="fw-bold mt-3 ms-0" for="search">Search By Name :</label>
-        <input [(ngModel)]="searchItems" placeholder="Enter the name to search for it" class="form-control" type="text"
-            id="search">
-        <div *ngFor="let product of allProduct|search:searchItems" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-2">
-            <app-product [product]="product"></app-product>
-        </div>
-        
-<div class="py-5">
-    <p-paginator  [rows]="2" [totalRecords]="4" (onPageChange)="getpage($event.page)">
-    </p-paginator>
-  </div>
+<div class="bg-home overflow-hidden">
+    <div class="container mt-5 pt-5">
+        <app-home-main-slid></app-home-main-slid>
+        <app-home-categories-slid></app-home-categories-slid>
+        <div class="row">
+            <h3 class="fw-bold">popular items this season :</h3>
+            <label class="fw-bold mt-3 ms-0" for="search">Search By Name :</label>
+            <input [(ngModel)]="searchItems" placeholder="Enter the name to search for it" class="form-control"
+                type="text" id="search">
+            <div *ngFor="let product of allProduct|search:searchItems" class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-2">
+                <app-product [product]="product"></app-product>
+            </div>
 
+            <div class="py-5">
+                <p-paginator [rows]="2" [totalRecords]="4" (onPageChange)="getpage($event.page)">
+                </p-paginator>
+            </div>
+
+        </div>
     </div>
 </div>
 

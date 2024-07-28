@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
@@ -9,7 +10,7 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 })
 export class WishListComponent implements OnInit {
 
-  constructor(private _WishlistService: WishlistService, private _CartService: CartService) { }
+  constructor(private _WishlistService: WishlistService, private _CartService: CartService, private toastr: ToastrService) { }
   
   isLoading: boolean = true
 
@@ -40,7 +41,7 @@ export class WishListComponent implements OnInit {
         this._WishlistService.wishItemsNum.next(response.data.length)
         this.detailsCart = response.data
         this.isLoading = false;
-       
+        this.toastr.error("Items have been deleted successfully ")
       },
       error: (err) => {
         console.log(err);
@@ -58,6 +59,7 @@ export class WishListComponent implements OnInit {
       next: (response) => {
        
         this._CartService.cartItemsNum.next(response.numOfCartItems)
+        this.toastr.success("Success Add To Cart 🛺")
 
       },
       error: (err) => {

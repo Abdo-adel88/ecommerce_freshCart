@@ -24,8 +24,22 @@ import { DetailsbrandComponent } from './component/detailsbrand/detailsbrand.com
 import { FooterComponent } from './component/footer/footer.component';
 
 const routes: Routes = [
-
   { path: "", redirectTo: "login", pathMatch: "full" },
+  
+  // { path: "home",loadComponent:()=>(import("./component/home/home.component").then((c)=>c.HomeComponent)),canActivate:[authguardGuard] },
+  // { path: "cart",loadComponent:()=>(import("./component/cart/cart.component").then((c)=>c.CartComponent)),canActivate:[authguardGuard] },
+  // { path: "shappingaddress/:id",loadComponent:()=>(import("./component/shapping-address/shapping-address.component").then((c)=>c.ShappingAddressComponent)),canActivate:[authguardGuard] },
+  // { path: "brands",loadComponent:()=>(import("./component/brands/brands.component").then((c)=>c.BrandsComponent)),canActivate:[authguardGuard] },
+  // { path: "product",loadComponent:()=>(import("./component/product/product.component").then((c)=>c.ProductComponent)),canActivate:[authguardGuard] },
+  // { path: "products",loadComponent:()=>(import("./component/allproducts/allproducts.component").then((c)=>c.AllproductsComponent)),canActivate:[authguardGuard] },
+  // { path: "footer",loadComponent:()=>(import("./component/footer/footer.component").then((c)=>c.FooterComponent)),canActivate:[authguardGuard] },
+  // { path: "categories",loadComponent:()=>(import("./component/categories/categories.component").then((c)=>c.CategoriesComponent)),canActivate:[authguardGuard] },
+  // { path: "detail-categories/:id",loadComponent:()=>(import("./component/details-categroies/details-categroies.component").then((c)=>c.DetailsCategroiesComponent)),canActivate:[authguardGuard] },
+  // { path: "detail-brands/:id",loadComponent:()=>(import("./component/detailsbrand/detailsbrand.component").then((c)=>c.DetailsbrandComponent)),canActivate:[authguardGuard] },
+  // { path: "wishList",loadComponent:()=>(import("./component/wish-list/wish-list.component").then((c)=>c.WishListComponent)),canActivate:[authguardGuard] },
+  // { path: "productdetails/:id",loadComponent:()=>(import("./component/productdetails/productdetails.component").then((c)=>c.ProductdetailsComponent)),canActivate:[authguardGuard] },
+  
+ 
   { path: "home", canActivate: [authguardGuard], component: HomeComponent },
   { path: "cart", canActivate: [authguardGuard], component: CartComponent },
   { path: "shappingaddress/:id", canActivate: [authguardGuard], component: ShappingAddressComponent },
@@ -40,6 +54,11 @@ const routes: Routes = [
   { path: "allorders", canActivate: [authguardGuard], component: OrdersComponent },
   { path: "notfound", canActivate: [authguardGuard], component: NotfoundComponent },
   { path: "productdetails/:id", canActivate: [authguardGuard], component: ProductdetailsComponent },
+  
+  
+ 
+
+
 
   { path: "login", canActivate: [noautdGuard], component: LoginComponent },
   { path: "register", canActivate: [noautdGuard], component: RegisterComponent },

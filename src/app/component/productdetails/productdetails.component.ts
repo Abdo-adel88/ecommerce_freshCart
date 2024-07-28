@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Iproduct } from 'src/app/Interfaces/iproduct';
 import { AllproductService } from 'src/app/services/allproduct.service';
 import { CartService } from 'src/app/services/cart.service';
+import { WishListComponent } from '../wish-list/wish-list.component';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -66,7 +68,7 @@ export class ProductdetailsComponent implements OnInit {
 
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private _AllproductService: AllproductService ,private _CartService: CartService ,private toastr: ToastrService ) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private _AllproductService: AllproductService ,private _CartService: CartService ,private toastr: ToastrService , private _WishlistService:WishlistService) { }
   productId: string | null = null;
   productDetails?:Iproduct;
   ngOnInit(): void {
@@ -91,6 +93,49 @@ export class ProductdetailsComponent implements OnInit {
         }
       })
     }
+
+
+
+    this._WishlistService.wishListProductId.subscribe((idsList) => { this.wishListProductsId = idsList })
+
     
   }
+
+
+  addTowish(id: any) {
+
+
+    // this.changeColor=false;
+    // console.log(this.changeColor)
+
+    this._WishlistService.addToWishList(id).subscribe({
+      next: (response) => {
+
+        response.data.find((x: any) => {
+          if (x.id == id) {
+            console.log(x.id);
+            console.log(id);
+            console.log(x.id == id);
+
+
+            
+          } 
+        }
+        );
+
+        this._WishlistService.wishItemsNum.next(response.data.length)
+        this.toastr.success("Success Add To Wish List ❤️")
+        this._WishlistService.wishListProductId.next(response.data)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+  wishListProductsId: string[] = []
+
+  isWishListProduct(id: string) {
+    return this.wishListProductsId.includes(id)
+  }
+
 }

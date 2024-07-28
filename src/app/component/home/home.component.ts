@@ -29,15 +29,15 @@ export class HomeComponent implements OnInit {
     if (page == 0) {
       this._AllproductService.getNextPage(1).subscribe((res) => {
         this.allProduct = res.data
-        
-        
+
+
         this.isLoading = false;
       })
     }
     else {
       this._AllproductService.getNextPage(page + 1).subscribe((res) => {
         this.allProduct = res.data
-     
+
         this.isLoading = false;
       })
     }
@@ -56,13 +56,13 @@ export class HomeComponent implements OnInit {
 
   searchItems: string = ''
 
-  
+
   ngOnInit(): void {
     this.isLoading = true;
 
     this._AllproductService.getAllproducts().subscribe({
       next: (response) => {
-        
+
         this.allProduct = response.data;
 
         this.isLoading = false;

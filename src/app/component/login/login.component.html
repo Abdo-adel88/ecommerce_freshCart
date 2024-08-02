@@ -5,13 +5,13 @@
             <div class=" p-3 mx-auto my-5">
 
                 <form (ngSubmit)="handelLogin(loginForm)" [formGroup]="loginForm">
-                    <h3>
-                        Login Now hell:
+                    <h3 class="fw-bold mb-3">
+                        Login Now:
                     </h3>
                     <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">{{apiErrorMessage}}</div>
 
 
-                    <label for="useremail ">email :</label>
+                    <label class="fw-bold" for="useremail ">Email :</label>
                     <input formControlName="email" class="form-control" id="useremail " type="email">
 
                     <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
@@ -21,7 +21,7 @@
 
                     </div>
 
-                    <label for="userpassword">password :</label>
+                    <label class="fw-bold mt-3"  for="userpassword">Password :</label>
                     <input formControlName="password" class="form-control" id="userpassword" type="password">
 
                     <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
@@ -33,13 +33,18 @@
 
                     </div>
 
-
-
-                    <button [disabled]="loginForm.invalid || isLoading" class="btn bg-main text-light my-3">
-                        <span *ngIf="!isLoading">Send</span>
-                        <span *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></span>
-                    </button>
-                    <a class="ms-2 text-secondary" routerLink="/forget-password">forget password?</a>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <button [disabled]="loginForm.invalid || isLoading" class="btn bg-main text-light my-3">
+                                <span *ngIf="!isLoading">Send</span>
+                                <span *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></span>
+                            </button>
+                            <a class="ms-2 text-secondary " routerLink="/forget-password">forget password?</a>
+                        </div>
+                        <div class="border mt-2 text-center ms-1 rounded-3">
+                            <a class=" p-md-2 " routerLink="/register">create new account <i class="fa-solid fa-plus"></i></a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

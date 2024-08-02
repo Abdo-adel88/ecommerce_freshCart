@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Iproduct } from 'src/app/Interfaces/iproduct';
 import { AllproductService } from 'src/app/services/allproduct.service';
+import { PageEvent } from 'src/app/Interfaces/page-event';
 
 @Component({
   selector: 'app-allproducts',
@@ -28,5 +29,48 @@ export class AllproductsComponent {
       
     })
   }
+  homeTop():any{
+    window.scrollTo(0,0);
+  }
+
+
+  PageEvent?: PageEvent
+  first: number = 1;
+
+  rows: number = 2;
+
+  onPageChange(event: PageEvent) {
+    this.first = event.first;
+    this.rows = event.rows;
+    window.scrollTo(0, 0);
+
+    // Fetch new page data
+  }
+
+
+  getpage(page: any) {
+    this.isLoading = true;
+    if (page == 0) {
+      this._AllproductService.getNextPage(1).subscribe((res) => {
+        this.allProduct = res.data
+
+
+        this.isLoading = false;
+        window.scrollTo(0,0);
+      })
+    }
+    else {
+      this._AllproductService.getNextPage(page + 1).subscribe((res) => {
+        this.allProduct = res.data
+
+        this.isLoading = false;
+        window.scrollTo(0,0);
+      })
+    }
+
+
+  }
+
+
 
 }

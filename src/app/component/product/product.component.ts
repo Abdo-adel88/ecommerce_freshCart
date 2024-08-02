@@ -14,13 +14,16 @@ export class ProductComponent implements OnInit {
   @Input() product!: Iproduct
   constructor(private _CartService: CartService, private _WishlistService: WishlistService, private toastr: ToastrService) { }
 
+  isLoading:boolean=false;
 
   addToCart(id: string) {
+    this.isLoading=true
     this._CartService.addToCart(id).subscribe({
       next: (response) => {
 
         this._CartService.cartItemsNum.next(response.numOfCartItems)
         this.toastr.success("Success Add To Cart 🛺")
+        this.isLoading=false
       },
       error: (err) => {
         console.log(err);

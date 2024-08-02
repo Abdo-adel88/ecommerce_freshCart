@@ -4,11 +4,11 @@
             <div class="p-3 mx-md-auto my-md-5 ">
 
                 <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
-                    <h3>
+                    <h3 class="fw-bold mb-3">
                         Register Now :
                     </h3>
                     <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">{{apiErrorMessage}}</div>
-                    <label for="username">username :</label>
+                    <label class="fw-bold " for="username">UserName :</label>
                     <input formControlName="name" class="form-control" id="username" type="text">
                     <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
                         class="text-danger">
@@ -20,7 +20,7 @@
 
                     </div>
 
-                    <label for="useremail ">email :</label>
+                    <label class="fw-bold mt-3" for="useremail ">Email :</label>
                     <input formControlName="email" class="form-control" id="useremail " type="email">
 
                     <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
@@ -32,7 +32,7 @@
 
                     </div>
 
-                    <label for="userpassword">password :</label>
+                    <label class="fw-bold mt-3" for="userpassword">Password :</label>
                     <input formControlName="password" class="form-control" id="userpassword" type="password">
 
                     <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
@@ -47,7 +47,7 @@
 
                     </div>
 
-                    <label for="userrepassword">repassword :</label>
+                    <label class="fw-bold mt-3" for="userrepassword">Repassword :</label>
                     <input formControlName="rePassword" class="form-control" id="userrepassword" type="password">
 
                     <div *ngIf="registerForm.get('rePassword')?.invalid && registerForm.get('rePassword')?.touched"
@@ -66,7 +66,7 @@
 
 
 
-                    <label for="userphone">phone</label>
+                    <label class="fw-bold mt-3" for="userphone">Phone</label>
                     <input formControlName="phone" class="form-control" id="userphone" type="tel">
                     <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
                         class="text-danger">

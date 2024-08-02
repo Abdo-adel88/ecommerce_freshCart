@@ -19,6 +19,10 @@
 
 
         </a>
-        <button (click)="addToCart(product._id)" class="btn bg-main w-100 text-white mt-3">+ Add To Cart</button>
+        <button  (click)="addToCart(product._id)" class="btn bg-main w-100 text-white mt-3">
+            <span *ngIf="!isLoading"  >+ Add To Cart</span>
+            <span *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></span>
+        </button>
+       
     </div>
 </div>

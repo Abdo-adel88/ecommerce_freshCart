@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ShappingAddressComponent implements OnInit {
       }
     })
   }
-  constructor(private _CartService: CartService, private _ActivatedRoute: ActivatedRoute) { }
+  constructor(private _CartService: CartService, private route: Router, private _ActivatedRoute: ActivatedRoute) { }
 
   shappingAddressForm: FormGroup = new FormGroup({
     details: new FormControl(null, [Validators.required]),
@@ -37,13 +37,16 @@ export class ShappingAddressComponent implements OnInit {
       this._CartService.onlinePayment(this.cartId, form.value).subscribe({
         next: (response) => {
           this.redirectToPaymentPage(response.session.url)
-          
-
-        },
+        }
+        ,
+       
         error: (err) => {
           console.log(err);
         }
       })
+
+
+
     }
   }
 }

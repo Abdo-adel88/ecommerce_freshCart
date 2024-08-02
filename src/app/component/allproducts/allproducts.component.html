@@ -31,5 +31,12 @@
         <div *ngFor="let product of allProduct|search:searchItems" class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mt-2">
             <app-product [product]="product"></app-product>
         </div>
+        <div class="py-5">
+            <p-paginator [rows]="2" [totalRecords]="4" (onPageChange)="getpage($event.page)">
+            </p-paginator>
+        </div>
+        <button (click)="homeTop()" class="btn bg-main position-fixed  position-btn rounded-circle"><i
+            class="fa-solid fa-arrow-up text-white"></i></button>
     </div>
+
 </div>

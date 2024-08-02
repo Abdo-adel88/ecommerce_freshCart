@@ -6,5 +6,10 @@
 }
 .startt
 {
-    left: 30px;
+    left: 32px;
+    
+}
+.w-btn
+{
+    width: 10px !important;
 }

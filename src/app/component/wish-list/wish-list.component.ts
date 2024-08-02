@@ -38,6 +38,7 @@ export class WishListComponent implements OnInit {
     this.isLoading = true;
     this._WishlistService.removeTooWishList(id).subscribe({
       next: (response) => {
+        this.getWishList()
         this._WishlistService.wishItemsNum.next(response.data.length)
         this.detailsCart = response.data
         this.isLoading = false;

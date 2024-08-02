@@ -11,63 +11,72 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
 
   constructor(private _CartService: CartService, private toastr: ToastrService) { }
-  
+
   detailsCart: any;
 
-  isLoading:boolean=true;
+  isLoading: boolean = true;
 
   ngOnInit(): void {
-   this.isLoading=true;
+    this.isLoading = true;
     this._CartService.getUserCart().subscribe({
       next: (response) => {
-        ;
+       
         this.detailsCart = response.data
         this._CartService.cartItemsNum.next(response.numOfCartItems)
 
-        this.isLoading=false;
+        this.isLoading = false;
 
       },
-      
+      error:()=>{
+        this.isLoading = false;
+      }
     })
+   
+    // 
+
   }
 
 
-  removeItemCart(id:string){
-    this.isLoading=true;
+  removeItemCart(id: string) {
+    this.isLoading = true;
     this._CartService.removeToCart(id).subscribe({
-      next:(response)=>{
+      next: (response) => {
         this.detailsCart = response.data
         this._CartService.cartItemsNum.next(response.numOfCartItems)
-        this.isLoading=false;
-       
+        this.isLoading = false;
+
         this.toastr.error("Items have been deleted successfully ")
-        },
-        error:(err)=>{console.log(err);
+      },
+      error: (err) => {
+        console.log(err);
       }
     })
   }
-  removeAllCart(){
-    this.isLoading=true;
+  removeAllCart() {
+    this.isLoading = true;
     this._CartService.removeAllCart().subscribe({
-      next:(response)=>{
-        
+      next: (response) => {
+
         this.detailsCart = response.data
         this._CartService.cartItemsNum.next(response.numOfCartItems)
-        this.isLoading=false;
+        this.isLoading = false;
         this.toastr.error("All Items have been deleted successfully ")
       },
-        error:(err)=>{console.log(err);
+      error: (err) => {
+        console.log(err);
       }
     })
   }
 
-  updateCartNumber(id: string, count: number){
-    this.isLoading=true;
-    this._CartService.updateCartNumber(id,count).subscribe({
-      next:(response)=>{ this.detailsCart = response.data
-        this.isLoading=false;
+  updateCartNumber(id: string, count: number) {
+    this.isLoading = true;
+    this._CartService.updateCartNumber(id, count).subscribe({
+      next: (response) => {
+        this.detailsCart = response.data
+        this.isLoading = false;
       },
-      error:(err)=>{console.log(err);
+      error: (err) => {
+        console.log(err);
       }
     })
   }
